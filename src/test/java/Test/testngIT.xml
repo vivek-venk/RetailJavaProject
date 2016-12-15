@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-      <class name="Test.BasicTestIT"/>      
+      <class name="Test.RegressionTestIT"/>      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

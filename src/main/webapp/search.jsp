@@ -42,7 +42,7 @@ ABC RETAIL STORE
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<form name="main"  action="/SearchingServlet" onsubmit="return validate(this);">
+<form name="main"  action="SearchingServlet" onsubmit="return validate(this);">
 
 <table align="center">
 

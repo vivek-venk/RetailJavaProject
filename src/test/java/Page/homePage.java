@@ -15,6 +15,7 @@ public class homePage {
 	public homePage(WebDriver driver)
 	{
 		this.driver = driver;
+		System.out.println("**Inside homePage"+driver.getCurrentUrl()+driver.getTitle());
 		if ( !driver.getTitle().equals("Search Items"))
 		{
 			throw new IllegalStateException("This is not sign in page, current page is: "

@@ -1,26 +1,5 @@
-<%@ page language="java" session="true" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import ="java.sql.*" %>
-<%@ page import ="javax.sql.*" %>
-<%@ page import ="Controller.Util" %>
-
-<%
-String userid=request.getParameter("user"); 
-session.putValue("userid",userid); 
-String pwd=request.getParameter("pwd"); 
-Class.forName("com.mysql.jdbc.Driver"); 
-//java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/retaildb","root","password"); 
-Util obj = new Util();
-java.sql.Connection con = obj.db();
-Statement st= con.createStatement(); 
-ResultSet rs=st.executeQuery("select * from users ");
-if(rs.next()) 
-{ 
-
- String str = rs.getString(3); 
- session.setAttribute("password", str);
-} 
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,11 +10,10 @@ function login(thisform)  {
 	var name = thisform.username.value;
 	var pwd = thisform.password.value;
 	var flag = false;
-	var passwd = '<%= session.getAttribute("password") %>';
-	//alert (passwd);
+	
 	if(name == "Demo")
 	{
-		if(pwd == passwd)
+		if(pwd == "password=1")
 		{
 			flag = true;
 		}
@@ -90,16 +68,6 @@ function login(thisform)  {
 </style>
 </head>
 <body bgcolor="#121212">
-
-
-<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost/karthik"
-     user="root"  password="password"/>
- 
-<sql:query dataSource="${snapshot}" var="result">
-SELECT * from users;
-</sql:query>
-
 <form name="main" action="search.jsp" method="POST" onsubmit="return login(this);">
 <font face="book antiqua">
 

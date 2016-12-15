@@ -15,6 +15,7 @@ public class resultsPage {
 	public resultsPage(WebDriver driver)
 	{
 		this.driver = driver;
+		System.out.println("**Inside resultsPage"+driver.getCurrentUrl()+driver.getTitle());
 		if ( !driver.getTitle().equals("Fill your cart"))
 		{
 			throw new IllegalStateException("This is not sign in page, current page is: "

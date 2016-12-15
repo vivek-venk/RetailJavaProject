@@ -14,6 +14,7 @@ public class loginPage {
 	public loginPage(WebDriver driver)
 	{
 		this.driver = driver;
+		System.out.println("**Inside loginPage"+driver.getCurrentUrl()+driver.getTitle());
 		if ( !driver.getTitle().equals("Retail Application Demo"))
 		{
 			throw new IllegalStateException("This is not sign in page, current page is: "

@@ -11,14 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import Model.*;
 
-import org.apache.log4j.*;
-
 /**
  * Servlet implementation class SearchingServlet
  */
 public class SearchingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger logger = Logger.getLogger("retailone");
+
     /**
      * Default constructor. 
      */
@@ -33,14 +31,7 @@ public class SearchingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		String requestid = request.getRequestedSessionId().toString();
-		logger.info("Getting into doGet" + requestid);		
 		ArrayList<String> res = new ArrayList<String>();
-		ApacheHttpClient obj = new ApacheHttpClient();
-		//obj.createHotels();
-		obj.getHotels(requestid);
-		
 		String str = request.getParameter("key");
 		String output = "";
 		Products pro = new Products();
@@ -51,7 +42,6 @@ public class SearchingServlet extends HttpServlet {
 		request.setAttribute("res", res);
 		RequestDispatcher rd = request.getRequestDispatcher("results.jsp");
 		rd.include(request, response);
-		logger.info("Getting out of doGet");
 		
 	}
 
