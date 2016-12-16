@@ -1,9 +1,9 @@
 ---
 applications:
-- name: retailapp-dev
+- name: retailapp-dev123
   memory: 512M
   instances: 1
-  host: retailapp-dev
+  host: retailapp-dev123
   path: target/retailone.war
   services:
     - "mysql-dev"
