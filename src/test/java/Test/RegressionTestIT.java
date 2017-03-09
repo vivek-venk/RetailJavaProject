@@ -20,7 +20,7 @@ public class RegressionTestIT {
 	  //WebDriver	driver = new ChromeDriver();
 	 // WebDriver	driver = new FirefoxDriver();
 	 WebDriver	driver = new HtmlUnitDriver();
-	  driver.get("http://localhost:8092/retailone/");
+	  driver.get("http://10.224.86.162:8080/retailone/");
 	  Assert.assertEquals("Retail Application Demo", driver.getTitle());
 	  
 	  loginPage loginpage = new loginPage(driver);
