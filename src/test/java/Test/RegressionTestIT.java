@@ -27,7 +27,7 @@ public class RegressionTestIT {
 	 //loginpage.validLogin().validSearch().validCheckout().proceedToCheckout().fillAddress().confirmOrder().makePayments();
 	 orderReportPage reportPage = new orderReportPage(driver);
 	 reportPage.orderConfirmation();
-	 loginpage =  reportPage.logout();
+	 //loginpage =  reportPage.logout();
 	 driver.close();
   }
 }
