@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cts.sample</groupId>
 	<artifactId>retailone</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
@@ -18,11 +18,7 @@
 			<version>6.5.1</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-	</dependency>
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -39,45 +35,73 @@
 			<artifactId>tomcat-util</artifactId>
 			<version>7.0.22</version>
 		</dependency>
-		<dependency>
-	    <groupId>mysql</groupId>
-	    <artifactId>mysql-connector-java</artifactId>
-	    <version>5.1.39</version>
-		</dependency>
-		<dependency>
-	    <groupId>net.sourceforge.argo</groupId>
-	    <artifactId>argo</artifactId>
-	    <version>3.19</version>
-</dependency>
+
 	</dependencies>
 	<build>
 
 		<plugins>
-			<plugin>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <version>2.3.2</version>
-			    <configuration>
-				<source>1.6</source>
-				<target>1.6</target>
-				<compilerArgument></compilerArgument>
-			    </configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
 					<warName>retailone</warName>
-					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+					<webXml>src\main\webapp\WEB-INF\web.xml</webXml>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.5.201505241946</version>
+                <executions>
+                <!--
+                    Prepares the property pointing to the JaCoCo runtime agent which
+                    is passed as VM argument when Maven the Surefire plugin is executed.
+                -->
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Sets the path to the file which contains the execution data. -->
+                            <destFile>${project.build.directory}/jacoco.exec</destFile>
+                            <!--
+                                Sets the name of the property containing the settings
+                                for JaCoCo runtime agent.
+                            -->
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <!--
+                        Ensures that the code coverage report for unit tests is created after
+                        unit tests have been run.
+                    -->
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Sets the path to the file which contains the execution data. -->
+                            <dataFile>${project.build.directory}/jacoco-ut.exec</dataFile>
+                            <!-- Sets the output directory for the code coverage report. -->
+                            <outputDirectory>surefire-reports/jacoco-ut</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
+					<server>localhost</server>
+        				<port>8085</port>
 					<warFile>target/retailone.war</warFile>
-					<path>/retailone</path>
+					<path>/</path>
 					<contextReloadable>true</contextReloadable>
 				</configuration>
 				<executions>
@@ -100,23 +124,45 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
-				<version>2.14.1</version> <configuration> <suiteXmlFiles> <suiteXmlFile>src/test/java/Test/testng.xml</suiteXmlFile> 
-				</suiteXmlFiles> <skip>true</skip> </configuration> </plugin> -->
+    	    <plugin> 
+	            <groupId>org.apache.maven.plugins</groupId> 
+	            <artifactId>maven-surefire-plugin</artifactId>
+				<configuration> 
+				    <runOrder>random</runOrder> 
+			    </configuration> 
+			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.15</version>
+                <configuration>
+                    <!-- Sets the VM argument line used when unit tests are run. -->
+                    <argLine>${surefireArgLine}</argLine>
+                    <!-- Skips unit tests if the value of skip.unit.tests property is true -->
+                    <skipTests>${skip.unit.tests}</skipTests>
+                    <!-- Excludes integration tests when unit tests are run. -->
+                    <excludes>
+                        <exclude>**/IT*.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.18.1</version>
+				
 				<executions>
 					<execution>
+						
 						<goals>
 							<goal>integration-test</goal>
 							<goal>verify</goal>
 						</goals>
+
 					</execution>
 				</executions>
+
 			</plugin>
 
 
