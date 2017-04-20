@@ -23,7 +23,7 @@ public class RegressionTestIT {
 	 driver.get("http://172.16.5.185:8080/retail-web/");
 	 Assert.assertEquals("Jenkins", driver.getTitle());
 	  
-	 loginPage loginpage = new loginPage(driver);
+	 //loginPage loginpage = new loginPage(driver);
 	 loginpage.validLogin().validSearch().validCheckout().proceedToCheckout().fillAddress().confirmOrder().makePayments();
 	 orderReportPage reportPage = new orderReportPage(driver);
 	 reportPage.orderConfirmation();
