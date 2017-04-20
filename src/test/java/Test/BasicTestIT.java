@@ -13,8 +13,8 @@ public class BasicTestIT {
   @Test
   public void f() {
 	 System.setProperty("webdriver.chrome.driver", "/bin/chromedriver");
-	 WebDriver	driver = new ChromeDriver();
-	 WebDriver	driver = new FirefoxDriver();
+	 //WebDriver	driver = new ChromeDriver();
+	 //WebDriver	driver = new FirefoxDriver();
 	 WebDriver	driver = new HtmlUnitDriver();
 	 driver.get("http://54.87.168.228:8080/retailone/");
 	 Assert.assertEquals("Retail Application Demo", driver.getTitle());
