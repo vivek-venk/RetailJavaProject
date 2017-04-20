@@ -24,7 +24,7 @@ public class RegressionTestIT {
 	 Assert.assertEquals("Jenkins", driver.getTitle());
 	  
 	 //loginPage loginpage = new loginPage(driver);
-	 loginpage.validLogin().validSearch().validCheckout().proceedToCheckout().fillAddress().confirmOrder().makePayments();
+	 //loginpage.validLogin().validSearch().validCheckout().proceedToCheckout().fillAddress().confirmOrder().makePayments();
 	 orderReportPage reportPage = new orderReportPage(driver);
 	 reportPage.orderConfirmation();
 	 loginpage =  reportPage.logout();
