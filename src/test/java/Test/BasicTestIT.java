@@ -3,9 +3,9 @@ package Test;
 import junit.framework.Assert;
 
 import org.testng.annotations.Test;
-//import org.openqa.selenium.*;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.*; 
 
