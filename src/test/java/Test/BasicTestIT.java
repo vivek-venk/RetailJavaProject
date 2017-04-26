@@ -15,10 +15,10 @@ public class BasicTestIT {
 	 System.setProperty("webdriver.chrome.driver", "/bin/chromedriver");
 	 //WebDriver	driver = new ChromeDriver();
 	 //WebDriver	driver = new FirefoxDriver();
-	 WebDriver	driver = new HtmlUnitDriver();
+	 //WebDriver	driver = new HtmlUnitDriver();
 	 //driver.get("http://172.16.5.185:8080/retail-web/");
 	 //Assert.assertEquals("Retail Application Demo", driver.getTitle());
 	 //Assert.assertEquals("Jenkins", driver.getTitle());
-	 driver.close();
+	 //driver.close();
   }
 }
