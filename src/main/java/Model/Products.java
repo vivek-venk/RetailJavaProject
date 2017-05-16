@@ -13,8 +13,7 @@ public class Products {
 		cam.add("Nikon");
 		cam.add("Canon");
 		cam.add("Kodak");
-		cam.add("Fuji");
-		
+				
 		mob.add("Google Nexus One");
 		mob.add("Sony Ericcson");
 		mob.add("Apple iPhone");
