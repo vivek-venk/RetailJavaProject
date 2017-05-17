@@ -23,7 +23,8 @@ public void setUp() throws Exception {
 		cam.add("Nikon");
 		cam.add("Canon");
 		cam.add("Kodak");
-								
+		cam.add("Fuji");
+	
 		mobile.add("Google Nexus One");
 		mobile.add("Sony Ericcson");
 		mobile.add("Apple iPhone");
