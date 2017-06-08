@@ -32,7 +32,7 @@ function login(thisform)  {
 {
 	width:400px;
 	height:150px;
-	border:2px solid blue;
+	border:2px solid red;
 	background-color:#AABBEA;
 	text-align:center;
 	right:200px;
@@ -71,7 +71,7 @@ function login(thisform)  {
 <form name="main" action="search.jsp" method="POST" onsubmit="return login(this);">
 <font face="book antiqua">
 
-<div style="width:1400px;height:120px;border:2px solid blue;background-color:#459DEA;position:relative;">
+<div style="width:1400px;height:120px;border:2px solid red;background-color:#459DEA;position:relative;">
 <table><tr>
 <td>
 </td><td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
