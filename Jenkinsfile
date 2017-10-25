@@ -14,6 +14,6 @@ node {
    }
    stage ('HelloWorld_NexusUpload')
    {
-        sh 'mn deploy -DskipTests=true'
+        sh 'mvn deploy -DskipTests=true'
    }
 }
